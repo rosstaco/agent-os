@@ -1,0 +1,40 @@
+{
+  "name": "@rosstaco/agent-os",
+  "version": "1.0.0",
+  "description": "Agent OS installer - AI-powered development workflow system for building products with Claude, Cursor, and GitHub Copilot",
+  "type": "module",
+  "bin": {
+    "agent-os": "./bin/cli.js"
+  },
+  "files": [
+    "bin/"
+  ],
+  "keywords": [
+    "agent",
+    "ai",
+    "development",
+    "workflow",
+    "automation",
+    "claude",
+    "cursor",
+    "copilot",
+    "tdd"
+  ],
+  "author": "Ross <rosstaco>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rosstaco/agent-os.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rosstaco/agent-os/issues"
+  },
+  "homepage": "https://buildermethods.com/agent-os",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {}
+}
