@@ -141,15 +141,17 @@ async function main() {
 }
 
 // Export for testing
-export { downloadFile, executeScript, runBaseInstallation, runProjectInit };
+export { downloadFile, executeScript, runBaseInstallation, runProjectInit, main };
 
-// Run main if this is the entry point (not imported as module)
-if (import.meta.url.startsWith('file:')) {
-  const modulePath = import.meta.url.slice(7); // Remove 'file://'
-  const scriptPath = process.argv[1];
-  
-  // Run if this file is being executed directly
-  if (!scriptPath || modulePath.includes(scriptPath) || scriptPath.includes('cli.js')) {
-    main();
-  }
+// Run if not imported as a module
+const isMainModule = process.argv[1] && (
+  process.argv[1].endsWith('cli.js') || 
+  process.argv[1].endsWith('agent-os')
+);
+
+if (isMainModule) {
+  main().catch(err => {
+    console.error('Error:', err.message);
+    process.exit(1);
+  });
 }
