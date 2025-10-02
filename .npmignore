@@ -1,0 +1,25 @@
+# Ignore development files
+.git
+.github
+.gitignore
+.DS_Store
+
+# Ignore test files
+test/
+*.test.js
+
+# Ignore documentation that's not needed in the package
+CHANGELOG.md
+LICENSE
+*.md
+!README.md
+
+# Ignore all directories except bin/
+/*
+!/bin/
+!/package.json
+!/README.md
+
+# Keep the bin directory
+bin/*
+!bin/cli.js

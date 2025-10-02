@@ -16,9 +16,61 @@ Use it with:
 
 ---
 
-### Documentation & Installation
+### Quick Start
 
-Docs, installation, useage, & best practices 👉 [It's all here](https://buildermethods.com/agent-os)
+Install Agent OS with npm (recommended):
+
+```bash
+# Install base system to ~/.agent-os
+npx @rosstaco/agent-os
+
+# Initialize in your project
+cd your-project
+npx @rosstaco/agent-os init --claude-code
+```
+
+**Available flags:**
+- `--claude-code` or `--claude` - Add Claude Code support
+- `--cursor` - Add Cursor support  
+- `--github-copilot` or `--copilot` - Add GitHub Copilot support
+- `--overwrite-instructions` - Overwrite existing instruction files
+- `--overwrite-standards` - Overwrite existing standards files
+- `--project-type=TYPE` - Use specific project type configuration
+
+**Common workflows:**
+
+```bash
+# Quick start - auto-installs base if needed
+npx @rosstaco/agent-os init --cursor
+
+# Install base with multiple tools
+npx @rosstaco/agent-os --claude-code --cursor --github-copilot
+
+# Initialize project with Cursor support
+cd my-rails-app
+npx @rosstaco/agent-os init --cursor
+
+# Initialize with custom project type
+npx @rosstaco/agent-os init --project-type=rails --claude-code
+```
+
+**How it works:**
+- The `init` command automatically installs the base system to `~/.agent-os` if it doesn't exist
+- Base installation only needs to happen once per machine
+- Each project gets its own `.agent-os` directory with instructions and standards
+- Tool-specific files (`.claude/`, `.cursor/`, `.github/prompts/`) are created in your project
+
+---
+
+### Documentation
+
+Full docs, useage, & best practices 👉 [buildermethods.com/agent-os](https://buildermethods.com/agent-os)
+
+---
+
+### For Maintainers
+
+**Publishing to npm:** See [.github/PUBLISHING.md](.github/PUBLISHING.md) for instructions on publishing new versions.
 
 ---
 
