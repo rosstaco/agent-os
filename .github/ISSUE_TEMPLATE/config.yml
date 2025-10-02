@@ -2,15 +2,15 @@ blank_issues_enabled: false
 
 contact_links:
   - name: 🐛 Report a bug or propose a fix
-    url: https://github.com/buildermethods/agent-os/discussions/categories/bugs
+    url: https://github.com/rosstaco/agent-os/discussions/categories/bugs
     about: Already checked the docs and found a reproducible bug? Please report it in the 'Bugs' discussion area.
 
   - name: 💡 Feature request or idea
-    url: https://github.com/buildermethods/agent-os/discussions/categories/ideas
+    url: https://github.com/rosstaco/agent-os/discussions/categories/ideas
     about: Request new features, integrations, or other improvements in the 'Ideas' discussion area.
 
   - name: ❓ Ask a question
-    url: https://github.com/buildermethods/agent-os/discussions/categories/q-a
+    url: https://github.com/rosstaco/agent-os/discussions/categories/q-a
     about: For community support and general questions, use the 'Q&A' discussion area.
 
   - name: 🎯 Member support request

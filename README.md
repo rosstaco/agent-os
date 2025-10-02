@@ -6,7 +6,7 @@
 
 Use it with:
 
-✅ Claude Code, Cursor, or any other AI coding tool.
+✅ Claude Code, Cursor, GitHub Copilot, or any other AI coding tool.
 
 ✅ New products or established codebases.
 

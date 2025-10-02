@@ -4,7 +4,7 @@
 # Used by both base.sh and project.sh
 
 # Base URL for raw GitHub content
-BASE_URL="https://raw.githubusercontent.com/buildermethods/agent-os/main"
+BASE_URL="https://raw.githubusercontent.com/rosstaco/agent-os/main"
 
 # Function to copy files from source to destination
 copy_file() {
@@ -183,5 +183,31 @@ install_from_github() {
                 "$overwrite_std" \
                 "commands/${cmd}.md"
         done
+    fi
+}
+
+# Function to convert command file to Copilot .prompt.md format
+convert_to_copilot_prompt() {
+    local source="$1"
+    local dest="$2"
+
+    if [ -f "$dest" ]; then
+        echo "  ⚠️  $(basename $dest) already exists - skipping"
+    else
+        # Read the source file and perform conversions:
+        # 1. Convert @file references to #file: syntax
+        # 2. Replace subagent attributes with tool suggestions
+        # 3. Replace "Use the X subagent to" phrases with "Use tools to"
+        sed -e 's/@\([^ ]*\.md\)/#file:\1/g' \
+            -e 's/subagent="context-fetcher"/tool="semantic_search or read_file"/g' \
+            -e 's/subagent="file-creator"/tool="create_file or create_directory"/g' \
+            -e 's/subagent="git-workflow"/tool="run_terminal with git commands"/g' \
+            -e 's/subagent="date-checker"/tool="run_terminal with date command"/g' \
+            -e 's/subagent="project-manager"/tool="read_file and replace_string_in_file"/g' \
+            -e 's/subagent="test-runner"/tool="run_terminal with test commands"/g' \
+            -e 's/Use the [a-z-]* subagent to/Use tools to/g' \
+            "$source" > "$dest"
+        
+        echo "  ✓ $(basename $dest)"
     fi
 }

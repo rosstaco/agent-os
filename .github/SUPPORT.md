@@ -4,7 +4,7 @@ Agent OS is free and open source. To keep it sustainable, you can seek support i
 
 - **[Documentation](https://buildermethods.com/agent-os):** Complete and up-to-date guides for installation, updating, and usage of Agent OS.
 
-- **[Community Support (Free)](https://github.com/buildermethods/agent-os/discussions):** Ask & answer questions with other users in the **Q&A** category of GitHub Discussions.
+- **[Community Support (Free)](https://github.com/rosstaco/agent-os/discussions):** Ask & answer questions with other users in the **Q&A** category of GitHub Discussions.
 
 - **[Official Support (Paid)](https://buildermethods.com/pro):** For guaranteed responses from Brian & team, join **Builder Methods Pro**.
 
