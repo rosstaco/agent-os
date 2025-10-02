@@ -1,6 +1,6 @@
 {
   "name": "@rosstaco/agent-os",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Agent OS installer - AI-powered development workflow system for building products with Claude, Cursor, and GitHub Copilot",
   "type": "module",
   "bin": {
