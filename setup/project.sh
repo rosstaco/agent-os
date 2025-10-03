@@ -361,12 +361,10 @@ fi
 
 if [ "$GITHUB_COPILOT" = true ]; then
     echo "GitHub Copilot usage:"
-    echo "  Reference prompts in chat using #file: syntax:"
-    echo "  #file:.github/prompts/plan-product.prompt.md"
-    echo "  #file:.github/prompts/create-spec.prompt.md"
-    echo "  #file:.github/prompts/execute-tasks.prompt.md"
-    echo ""
-    echo "  Or use @workspace to discuss the prompts naturally"
+    echo "  /plan-product    - Set the mission & roadmap for a new product"
+    echo "  /analyze-product - Set up the mission and roadmap for an existing product"
+    echo "  /create-spec     - Create a spec for a new feature"
+    echo "  /execute-tasks   - Build and ship code for a new feature"
     echo ""
 fi
 
