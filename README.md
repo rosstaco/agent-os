@@ -1,4 +1,11 @@
-<img width="1280" height="640" alt="agent-os-og" src="https://github.com/user-attachments/assets/f70671a2-66e8-4c80-8998-d4318af55d10" />
+# Agent OS (rosstaco fork)
+
+> **Note:** This is a fork of [buildermethods/agent-os](https://github.com/buildermethods/agent-os). The original project was created by Brian Casel at Builder Methods.
+>
+> **What's different in this fork:**
+> - ✨ Added GitHub Copilot support
+> - 📦 Simplified installation with npx wrapper
+> - 🚀 Easier setup and initialization process
 
 ## Your system for spec-driven agentic development.
 
@@ -68,15 +75,11 @@ Full docs, useage, & best practices 👉 [buildermethods.com/agent-os](https://b
 
 ---
 
-### For Maintainers
+### Original Project by Brian Casel @ Builder Methods
 
-**Publishing to npm:** See [.github/PUBLISHING.md](.github/PUBLISHING.md) for instructions on publishing new versions.
+The original Agent OS was created by Brian Casel, the creator of [Builder Methods](https://buildermethods.com), where Brian helps professional software developers and teams build with AI.
 
----
-
-### Created by Brian Casel @ Builder Methods
-
-Created by Brian Casel, the creator of [Builder Methods](https://buildermethods.com), where Brian helps professional software developers and teams build with AI.
+This fork is maintained by [Ross Miles](https://github.com/rosstaco).
 
 Get Brian's free resources on building with AI:
 - [Builder Briefing newsletter](https://buildermethods.com)
