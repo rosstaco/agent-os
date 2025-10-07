@@ -11,10 +11,9 @@ OVERWRITE_STANDARDS=false
 OVERWRITE_CONFIG=false
 CLAUDE_CODE=false
 CURSOR=false
-GITHUB_COPILOT=false
 
 # Base URL for raw GitHub content
-BASE_URL="https://raw.githubusercontent.com/rosstaco/agent-os/main"
+BASE_URL="https://raw.githubusercontent.com/buildermethods/agent-os/main"
 
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
@@ -39,10 +38,6 @@ while [[ $# -gt 0 ]]; do
             CURSOR=true
             shift
             ;;
-        --github-copilot|--copilot)
-            GITHUB_COPILOT=true
-            shift
-            ;;
         -h|--help)
             echo "Usage: $0 [OPTIONS]"
             echo ""
@@ -52,7 +47,6 @@ while [[ $# -gt 0 ]]; do
             echo "  --overwrite-config          Overwrite existing config.yml"
             echo "  --claude-code               Add Claude Code support"
             echo "  --cursor                    Add Cursor support"
-            echo "  --github-copilot            Add GitHub Copilot support"
             echo "  -h, --help                  Show this help message"
             echo ""
             exit 0
@@ -143,21 +137,6 @@ if [ "$CURSOR" = true ]; then
     fi
 fi
 
-# Handle GitHub Copilot installation
-if [ "$GITHUB_COPILOT" = true ]; then
-    echo ""
-    echo "📥 Enabling GitHub Copilot support..."
-
-    # Update config to enable github_copilot
-    if [ -f "$INSTALL_DIR/config.yml" ]; then
-        sed -i.bak '/github_copilot:/,/enabled:/ s/enabled: false/enabled: true/' "$INSTALL_DIR/config.yml" && rm "$INSTALL_DIR/config.yml.bak"
-        echo "  ✓ GitHub Copilot enabled in configuration"
-    fi
-    
-    echo ""
-    echo "  ℹ️  Copilot prompts will be generated from command files during project installation"
-fi
-
 # Success message
 echo ""
 echo "✅ Agent OS base installation has been completed."
@@ -183,10 +162,6 @@ echo "   $INSTALL_DIR/setup/project.sh   - Project installation script"
 
 if [ "$CLAUDE_CODE" = true ]; then
     echo "   $INSTALL_DIR/claude-code/agents/ - Claude Code agent templates"
-fi
-
-if [ "$GITHUB_COPILOT" = true ]; then
-    echo "   GitHub Copilot prompts will be generated during project installation"
 fi
 
 echo ""
