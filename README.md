@@ -69,6 +69,14 @@ npx @rosstaco/agent-os init --project-type=rails --claude-code
 
 ---
 
+### Follow updates & releases
+
+Read the [changelog](CHANGELOG.md)
+
+[Subscribe to be notified of major new releases of Agent OS](https://buildermethods.com/agent-os)
+
+---
+
 ### Documentation
 
 Full docs, useage, & best practices 👉 [buildermethods.com/agent-os](https://buildermethods.com/agent-os)
@@ -86,4 +94,3 @@ Get Brian's free resources on building with AI:
 - [YouTube](https://youtube.com/@briancasel)
 
 Join [Builder Methods Pro](https://buildermethods.com/pro) for official support and connect with our community of AI-first builders:
-
