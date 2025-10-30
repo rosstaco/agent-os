@@ -3,9 +3,10 @@
 > **Note:** This is a fork of [buildermethods/agent-os](https://github.com/buildermethods/agent-os). The original project was created by Brian Casel at Builder Methods.
 >
 > **What's different in this fork:**
-> - ✨ Added GitHub Copilot support
-> - 📦 Simplified installation with npx wrapper
-> - 🚀 Easier setup and initialization process
+> - ✨ **GitHub Copilot support** - Custom prompts integrated into VS Code
+> - 📦 **Project-only installation** - Simplified installation directly to your project
+> - 🚀 **Single-agent workflows** - Streamlined commands for better Copilot integration
+> - 🔧 **Direct Node.js implementation** - No bash script dependencies
 
 ## Your system for spec-driven agentic development.
 
@@ -13,7 +14,7 @@
 
 Use it with:
 
-✅ Claude Code, Cursor, GitHub Copilot, or any other AI coding tool.
+✅ **GitHub Copilot** (currently supported)
 
 ✅ New products or established codebases.
 
@@ -25,47 +26,33 @@ Use it with:
 
 ### Quick Start
 
-Install Agent OS with npm (recommended):
+Install Agent OS with npm:
 
 ```bash
-# Install base system to ~/.agent-os
-npx @rosstaco/agent-os
-
-# Initialize in your project
 cd your-project
-npx @rosstaco/agent-os init --claude-code
+npx @rosstaco/agent-os init --github-copilot
 ```
 
-**Available flags:**
-- `--claude-code` or `--claude` - Add Claude Code support
-- `--cursor` - Add Cursor support  
-- `--github-copilot` or `--copilot` - Add GitHub Copilot support
-- `--overwrite-instructions` - Overwrite existing instruction files
-- `--overwrite-standards` - Overwrite existing standards files
-- `--project-type=TYPE` - Use specific project type configuration
+This will create:
+- `.agent-os/` directory with workflows, standards, and converted prompts
+- `.vscode/settings.json` configured to register prompts with Copilot
 
-**Common workflows:**
+**Available Commands:**
 
-```bash
-# Quick start - auto-installs base if needed
-npx @rosstaco/agent-os init --cursor
+After installation, use these prompts in GitHub Copilot Chat:
 
-# Install base with multiple tools
-npx @rosstaco/agent-os --claude-code --cursor --github-copilot
-
-# Initialize project with Cursor support
-cd my-rails-app
-npx @rosstaco/agent-os init --cursor
-
-# Initialize with custom project type
-npx @rosstaco/agent-os init --project-type=rails --claude-code
-```
+- `#file:.agent-os/commands/plan-product/plan-product.prompt.md` - Plan and document product mission and roadmap
+- `#file:.agent-os/commands/shape-spec/shape-spec.prompt.md` - Shape feature specifications  
+- `#file:.agent-os/commands/write-spec/write-spec.prompt.md` - Write detailed specifications
+- `#file:.agent-os/commands/create-tasks/create-tasks.prompt.md` - Create implementation tasks
+- `#file:.agent-os/commands/implement-tasks/implement-tasks.prompt.md` - Execute implementation tasks
 
 **How it works:**
-- The `init` command automatically installs the base system to `~/.agent-os` if it doesn't exist
-- Base installation only needs to happen once per machine
-- Each project gets its own `.agent-os` directory with instructions and standards
-- Tool-specific files (`.claude/`, `.cursor/`, `.github/prompts/`) are created in your project
+- Installs directly to your project's `.agent-os/` directory
+- Copies standards (coding style, conventions, tech stack guidelines)
+- Copies workflows (reusable instruction components)
+- Converts commands to `.prompt.md` format for Copilot
+- Configures VS Code to register prompts with Copilot's chat interface
 
 ---
 

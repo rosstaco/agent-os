@@ -80,7 +80,7 @@ if [ "$NO_BASE" = true ]; then
     IS_FROM_BASE=false
     echo "📦 Installing directly from GitHub (no base installation)"
     # Set BASE_URL for GitHub downloads
-    BASE_URL="https://raw.githubusercontent.com/buildermethods/agent-os/main"
+    BASE_URL="https://raw.githubusercontent.com/rosstaco/agent-os/agentos-v2"
     # Download and source functions when running from GitHub
     TEMP_FUNCTIONS="/tmp/agent-os-functions-$$.sh"
     curl -sSL "${BASE_URL}/setup/functions.sh" -o "$TEMP_FUNCTIONS"

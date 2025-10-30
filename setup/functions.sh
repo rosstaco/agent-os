@@ -4,7 +4,8 @@
 # Used by both base.sh and project.sh
 
 # Base URL for raw GitHub content
-BASE_URL="https://raw.githubusercontent.com/buildermethods/agent-os/main"
+BASE_URL="https://raw.githubusercontent.com/rosstaco/agent-os/agentos-v2"
+
 
 # Function to copy files from source to destination
 copy_file() {

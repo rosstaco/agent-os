@@ -1,13 +1,14 @@
 {
   "name": "@rosstaco/agent-os",
-  "version": "1.0.1",
-  "description": "Agent OS installer - AI-powered development workflow system for building products with Claude, Cursor, and GitHub Copilot",
+  "version": "2.0.0",
+  "description": "Agent OS installer - AI-powered development workflow system for building products with GitHub Copilot",
   "type": "module",
   "bin": {
     "agent-os": "./bin/cli.js"
   },
   "files": [
-    "bin/"
+    "bin/",
+    "profiles/"
   ],
   "keywords": [
     "agent",
@@ -15,9 +16,9 @@
     "development",
     "workflow",
     "automation",
-    "claude",
-    "cursor",
     "copilot",
+    "github-copilot",
+    "prompts",
     "tdd"
   ],
   "author": "Ross <rosstaco>",

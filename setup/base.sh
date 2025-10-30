@@ -13,7 +13,7 @@ CLAUDE_CODE=false
 CURSOR=false
 
 # Base URL for raw GitHub content
-BASE_URL="https://raw.githubusercontent.com/buildermethods/agent-os/main"
+BASE_URL="https://raw.githubusercontent.com/rosstaco/agent-os/agentos-v2"
 
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
