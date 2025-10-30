@@ -11,7 +11,6 @@ OVERWRITE_INSTRUCTIONS=false
 OVERWRITE_STANDARDS=false
 CLAUDE_CODE=false
 CURSOR=false
-GITHUB_COPILOT=false
 PROJECT_TYPE=""
 
 # Parse command line arguments
@@ -37,10 +36,6 @@ while [[ $# -gt 0 ]]; do
             CURSOR=true
             shift
             ;;
-        --github-copilot|--copilot)
-            GITHUB_COPILOT=true
-            shift
-            ;;
         --project-type=*)
             PROJECT_TYPE="${1#*=}"
             shift
@@ -54,7 +49,6 @@ while [[ $# -gt 0 ]]; do
             echo "  --overwrite-standards       Overwrite existing standards files"
             echo "  --claude-code               Add Claude Code support"
             echo "  --cursor                    Add Cursor support"
-            echo "  --github-copilot            Add GitHub Copilot support"
             echo "  --project-type=TYPE         Use specific project type for installation"
             echo "  -h, --help                  Show this help message"
             echo ""
@@ -86,7 +80,7 @@ if [ "$NO_BASE" = true ]; then
     IS_FROM_BASE=false
     echo "📦 Installing directly from GitHub (no base installation)"
     # Set BASE_URL for GitHub downloads
-    BASE_URL="https://raw.githubusercontent.com/rosstaco/agent-os/main"
+    BASE_URL="https://raw.githubusercontent.com/rosstaco/agent-os/agentos-v2"
     # Download and source functions when running from GitHub
     TEMP_FUNCTIONS="/tmp/agent-os-functions-$$.sh"
     curl -sSL "${BASE_URL}/setup/functions.sh" -o "$TEMP_FUNCTIONS"
@@ -125,15 +119,6 @@ if [ "$IS_FROM_BASE" = true ]; then
            grep -A1 "cursor:" "$BASE_AGENT_OS/config.yml" | grep -q "enabled: true"; then
             CURSOR=true
             echo "  ✓ Auto-enabling Cursor support (from Agent OS config)"
-        fi
-    fi
-
-    if [ "$GITHUB_COPILOT" = false ]; then
-        # Check if github_copilot is enabled in base config
-        if grep -q "github_copilot:" "$BASE_AGENT_OS/config.yml" && \
-           grep -A1 "github_copilot:" "$BASE_AGENT_OS/config.yml" | grep -q "enabled: true"; then
-            GITHUB_COPILOT=true
-            echo "  ✓ Auto-enabling GitHub Copilot support (from Agent OS config)"
         fi
     fi
 
@@ -283,37 +268,6 @@ if [ "$CURSOR" = true ]; then
     fi
 fi
 
-# Handle GitHub Copilot installation for project
-if [ "$GITHUB_COPILOT" = true ]; then
-    echo ""
-    echo "📥 Installing GitHub Copilot support..."
-    mkdir -p "./.github/prompts"
-
-    if [ "$IS_FROM_BASE" = true ]; then
-        # Convert command files from base installation
-        echo "  📂 Converting commands to prompts:"
-        for cmd in plan-product create-spec create-tasks execute-tasks analyze-product; do
-            if [ -f "$BASE_AGENT_OS/commands/${cmd}.md" ]; then
-                convert_to_copilot_prompt "$BASE_AGENT_OS/commands/${cmd}.md" \
-                    "./.github/prompts/${cmd}.prompt.md"
-            else
-                echo "  ⚠️  Warning: ${cmd}.md not found in base installation"
-            fi
-        done
-    else
-        # Download from GitHub and convert when using --no-base
-        echo "  📂 Downloading and converting commands to prompts:"
-        for cmd in plan-product create-spec create-tasks execute-tasks analyze-product; do
-            TEMP_FILE="/tmp/${cmd}.md"
-            curl -s -o "$TEMP_FILE" "${BASE_URL}/commands/${cmd}.md"
-            if [ -f "$TEMP_FILE" ]; then
-                convert_to_copilot_prompt "$TEMP_FILE" "./.github/prompts/${cmd}.prompt.md"
-                rm "$TEMP_FILE"
-            fi
-        done
-    fi
-fi
-
 # Success message
 echo ""
 echo "✅ Agent OS has been installed in your project ($PROJECT_NAME)!"
@@ -329,10 +283,6 @@ fi
 
 if [ "$CURSOR" = true ]; then
     echo "   .cursor/rules/             - Cursor command rules"
-fi
-
-if [ "$GITHUB_COPILOT" = true ]; then
-    echo "   .github/prompts/           - GitHub Copilot custom prompts"
 fi
 
 echo ""
@@ -356,15 +306,6 @@ if [ "$CURSOR" = true ]; then
     echo "  @analyze-product - Set up the mission and roadmap for an existing product"
     echo "  @create-spec     - Create a spec for a new feature"
     echo "  @execute-tasks   - Build and ship code for a new feature"
-    echo ""
-fi
-
-if [ "$GITHUB_COPILOT" = true ]; then
-    echo "GitHub Copilot usage:"
-    echo "  /plan-product    - Set the mission & roadmap for a new product"
-    echo "  /analyze-product - Set up the mission and roadmap for an existing product"
-    echo "  /create-spec     - Create a spec for a new feature"
-    echo "  /execute-tasks   - Build and ship code for a new feature"
     echo ""
 fi
 
